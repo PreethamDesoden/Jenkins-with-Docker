@@ -11,6 +11,7 @@ pipeline {
         stage('Docker build') {
             steps {
                 sh 'docker build -t demo-image .'
+                echo "Docker image has been successfully built"
             }
         }
     }
