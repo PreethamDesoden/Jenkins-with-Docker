@@ -16,7 +16,7 @@ pipeline {
             agent {
                 docker {
                     image 'docker:24'
-                    args '--group-add docker -v /var/run/docker.sock:/var/run/docker.sock'
+                    args '--group-add 984 -v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
             steps {
