@@ -26,6 +26,9 @@ pipeline {
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
                     sh '''
+                      export DOCKER_CONFIG=/tmp/.docker
+                      mkdir -p $DOCKER_CONFIG
+                      
                       docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} .
                       echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
                       docker push ${IMAGE_NAME}:${BUILD_NUMBER}
